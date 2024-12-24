@@ -1,8 +1,12 @@
 import express from 'express';
+import { SkillsRoutes } from '../modules/Skills/skills.route';
 const router = express.Router();
 
 const moduleRouter = [
-  
+  {
+    path: "/skills",
+    route: SkillsRoutes,
+  }
   
 ];
 
