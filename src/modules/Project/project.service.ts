@@ -13,6 +13,12 @@ const getProjects = async () => {
   return result;
 };
 
+const getSingleProject = async (id: string) => {
+  const result = await Project.findById(id);
+
+  return result;
+};
+
 const updateProject = async (id: string, payload: IProject) => {
   const result = await Project.findByIdAndUpdate(id, payload, { new: true });
 
@@ -22,12 +28,13 @@ const updateProject = async (id: string, payload: IProject) => {
 const deleteProject = async (id: string) => {
   const result = await Project.findByIdAndDelete(id);
 
-    return result;
+  return result;
 };
 
 export const ProjectServices = {
-    addProject,
-    getProjects,
-    updateProject,
-    deleteProject,
-}
+  addProject,
+  getProjects,
+  getSingleProject,
+  updateProject,
+  deleteProject,
+};
