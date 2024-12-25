@@ -4,7 +4,7 @@ import sendResponse from "../../utils/sendResponse";
 import { BlogServices } from "./blog.service";
 
 const addBlog = catchAsync(async (req, res) => {
-  const result = await BlogServices.addBlog(req.body);
+  const result = await BlogServices.addBlog(req.body, req.file);
 
   sendResponse(res, {
     success: true,
@@ -39,7 +39,7 @@ const getSingleBlog = catchAsync(async (req, res) => {
 
 const updateBlog = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await BlogServices.updateBlog(id, req.body);
+  const result = await BlogServices.updateBlog(id, req.body, req.file);
 
   sendResponse(res, {
     success: true,

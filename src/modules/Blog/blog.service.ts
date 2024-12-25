@@ -1,7 +1,10 @@
+import { IFile } from '../../types/file';
 import { IBlog } from './blog.interface';
 import { Blog } from './blog.model';
 
-const addBlog = async (payload: IBlog) => {
+const addBlog = async (payload: IBlog, file: IFile | undefined) => {
+  if (file) payload.blogImage = file.path;
+
   const result = await Blog.create(payload);
 
   return result;
@@ -19,7 +22,13 @@ const getSingleBlog = async (id: string) => {
   return result;
 };
 
-const updateBlog = async (id: string, payload: Partial<IBlog>) => {
+const updateBlog = async (
+  id: string,
+  payload: Partial<IBlog>,
+  file: IFile | undefined,
+) => {
+  if (file) payload.blogImage = file.path;
+
   const result = await Blog.findByIdAndUpdate(id, payload, { new: true });
 
   return result;

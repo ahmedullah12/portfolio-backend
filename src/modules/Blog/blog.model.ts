@@ -8,7 +8,6 @@ const blogSchema = new Schema<IBlog>({
     },
     blogImage: {
         type: String,
-        required: true
     },
     text: {
         type: String,

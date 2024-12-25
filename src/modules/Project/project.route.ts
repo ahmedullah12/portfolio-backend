@@ -9,4 +9,4 @@ router.get('/:id', ProjectController.getSingleProject);
 router.put('/:id', ProjectController.updateProject);
 router.delete('/:id', ProjectController.deleteProject);
 
-export const SkillsRoutes = router;
+export const ProjectsRoutes = router;
