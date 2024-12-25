@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
 
 // if the route not found
-const notFound = (req: Request, res: Response, next: NextFunction) => {
+const notFoundRoute = (req: Request, res: Response, next: NextFunction) => {
   return res
     .status(httpStatus.NOT_FOUND)
     .json({
@@ -12,4 +12,4 @@ const notFound = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export default notFound;
+export default notFoundRoute;
