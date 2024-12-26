@@ -5,11 +5,11 @@ import { Project } from './project.model';
 import { IFile } from '../../types/file';
 
 const addProject = async (payload: IProject, file: IFile | undefined) => {
-  if(!file){
+  if (!file) {
     throw new AppError(httpStatus.BAD_REQUEST, 'Please upload an image');
   }
 
-  const result = await Project.create({...payload, image: file.path});
+  const result = await Project.create({ ...payload, image: file.path });
 
   return result;
 };
@@ -26,7 +26,15 @@ const getSingleProject = async (id: string) => {
   return result;
 };
 
-const updateProject = async (id: string, payload: IProject) => {
+const updateProject = async (
+  id: string,
+  payload: Partial<IProject>,
+  file: IFile | undefined,
+) => {
+  if (file) {
+    payload.image = file.path;
+  }
+
   const result = await Project.findByIdAndUpdate(id, payload, { new: true });
 
   return result;

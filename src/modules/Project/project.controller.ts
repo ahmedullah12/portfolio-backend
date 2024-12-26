@@ -39,7 +39,7 @@ const getSingleProject = catchAsync(async (req, res) => {
 
 const updateProject = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await ProjectServices.updateProject(id, req.body);
+  const result = await ProjectServices.updateProject(id, req.body, req.file);
 
   sendResponse(res, {
     success: true,

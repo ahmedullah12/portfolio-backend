@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TErrorSource, TGenericErrorResponse } from '../interface/error';
+
+import { TErrorSource, TGenericErrorResponse } from "../types/error";
 
 const handleDuplicateError = (err: any): TGenericErrorResponse => {
   const regex = /dup key: { ([\w]+):/;

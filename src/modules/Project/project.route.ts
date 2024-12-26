@@ -13,7 +13,12 @@ router.post(
   ProjectController.addProject,
 );
 router.get('/:id', ProjectController.getSingleProject);
-router.put('/:id', ProjectController.updateProject);
+router.put(
+  '/:id',
+  multerUpload.single('image'),
+  parseBody,
+  ProjectController.updateProject,
+);
 router.delete('/:id', ProjectController.deleteProject);
 
 export const ProjectsRoutes = router;
