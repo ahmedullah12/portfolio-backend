@@ -3,6 +3,7 @@ import { SkillsRoutes } from '../modules/Skills/skills.route';
 import { BlogsRoutes } from '../modules/Blog/blog.route';
 import { ProjectsRoutes } from '../modules/Project/project.route';
 import { AuthRoutes } from '../modules/User/auth.route';
+import { ExperienceRoutes } from '../modules/Experience/experience.route';
 const router = express.Router();
 
 const moduleRouter = [
@@ -22,7 +23,10 @@ const moduleRouter = [
     path: "/auth",
     route: AuthRoutes,
   },
-  
+  {
+    path: "/experiences",
+    route: ExperienceRoutes,
+  },
 ];
 
 moduleRouter.forEach((route) => router.use(route.path, route.route));
