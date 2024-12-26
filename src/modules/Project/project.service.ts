@@ -1,8 +1,15 @@
+import httpStatus from 'http-status';
+import AppError from '../../errors/AppError';
 import { IProject } from './project.interface';
 import { Project } from './project.model';
+import { IFile } from '../../types/file';
 
-const addProject = async (payload: IProject) => {
-  const result = await Project.create(payload);
+const addProject = async (payload: IProject, file: IFile | undefined) => {
+  if(!file){
+    throw new AppError(httpStatus.BAD_REQUEST, 'Please upload an image');
+  }
+
+  const result = await Project.create({...payload, image: file.path});
 
   return result;
 };
